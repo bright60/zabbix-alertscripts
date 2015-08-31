@@ -5,7 +5,7 @@ subject="$2"
 content="$3"
 
 useropenid=$user
-eventtime=$(echo "$content" |grep "Event tim" |sed 's#Event time : ## ')
+eventtime=$(echo "$content" |grep "Event tim" |sed 's#Event time: ## ')
 itemvalue=$(echo "$content" |tail -3 |head -1 |sed 's#1. ##')
 
 touser=$useropenid
