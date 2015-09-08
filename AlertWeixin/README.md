@@ -85,7 +85,7 @@ Script name:     AlertWeixin.sh
 
 	```
 Type:                X. AlertWeixin
-Send to:            OPENID
+Send to:            {openid}
 ```
 
 ## 六、测试验证
