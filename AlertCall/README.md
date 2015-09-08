@@ -12,7 +12,7 @@
 	- 配置最简单
 	- 呼叫费用(0.06元/次)，没有其他成本
 	- 电话接听后播报语音验证码，可能会造成困惑
-2. 电话播报预制录音
+2. 电话播报预录制语音
 	- 配置简单
 	- 呼叫费用(0.06元/次)
     - 需要启用IVR功能
@@ -33,7 +33,68 @@
 
 ---
 
-编写中..
+## 一、注册云通讯账号，并进行企业账号认证
+[荣联·云通讯](http://www.yuntongxun.com/)
+
+## 二、创建应用
+- 记录下账号ID以及应用的APP ID/TOKEN，备用
+- 如果使用“电话播报预录制语音”的方式，需要额外配置
+	- 启用IVR功能
+	- 上传预录制的语音 alertnotify.wav
+		- 可找妹纸录制，或者使用TTS软件生成
+
+## 三、下载配置告警通知脚本
+
+```
+# 下载告警通知脚本
+$ git clone https://github.com/vincihu/misc/
+# 部署告警通知脚本到zabbix的alertscripts目录
+$ sudo mv misc/AlertCall /usr/lib/zabbix/alertscripts/
+$ sudo ln -s /usr/lib/zabbix/alertscripts/{AlertCall/AlertCall.sh,}
+$ sudo mkdir /usr/lib/zabbix/alertscripts/logs
+# 为脚本添加zabbix用户执行权限
+$ sudo chmod u+x AlertCall.sh
+$ sudo chown zabbix:zabbix /usr/lib/zabbix/alertscripts/{logs/,AlertCall.sh}
+# 安装需要的python模块
+$ sudo pip install -U configparser
+# 初始化环境
+$ sudo mkdir /var/run/zabbix/AlertCall/
+$ sudo chown zabbix:zabbix /var/run/zabbix/AlertCall/
+```
+修改AlertCall/yuntongxun.conf，填入账号相关信息
+
+```
+[default]
+accountSid      = {accountSid}
+accountToken    = {accountToken}
+appId           = {appId}
+```
+## 四、测试脚本
+
+```
+$ cd /usr/lib/zabbix/alertscripts/
+$ sudo -u zabbix bash AlertCall.sh {your mobile number}
+```
+
+
+## 五、配置Zabbix
+
+1. 添加Media type(告警媒介)
+
+	```
+Name:			X. AlertCall
+Type:			Script
+Script name:	AlertCall.sh
+```
+
+2. 配置profile - Media(告警接收ID)
+
+	```
+Type:			X. AlertCall
+Send to:		{Mobile}
+```
+
+## 六、测试验证
 
 	
 ---
