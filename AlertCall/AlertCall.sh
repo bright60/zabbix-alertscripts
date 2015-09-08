@@ -55,6 +55,7 @@ date +%s   > calling.$PNUM.timestamp
 #  sleep 7
 #done
 
+#VoiceVerify $PNUM
 LandingCall $PNUM
 
 #4. 如果网络问题呼叫失败,重试
@@ -62,6 +63,7 @@ LOG=/usr/lib/zabbix/alertscripts/logs/LandingCall.log
 while (grep -A4 $PNUM $LOG |tail -1|grep 172001 >/dev/null 2>&1)
 do
   sleep 15
+  #VoiceVerify $PNUM
   LandingCall $PNUM
   date +%s   > calling.$PNUM.timestamp
 done
