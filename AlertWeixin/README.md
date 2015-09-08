@@ -23,9 +23,9 @@
 备注：如果个人用户的话，建议可以直接使用QQ邮件+微信邮件提醒。
 
 好叻，下面开始我们整个步骤。
-## 一、注册微信服务号，并进行微信认证
+## 一、注册微信服务号，并进行微信认证
 
-关于微信服务号的注册及认证，请看微信官方指引
+关于微信服务号的注册及认证，请看微信官方指引
 
 ## 二、开通模板消息功能以及报警通知模板
 
@@ -47,7 +47,7 @@ $ sudo chown zabbix:zabbix /usr/lib/zabbix/alertscripts/{logs/,AlertWeixin.sh}
 # 安装需要的python模块
 $ sudo pip install -U configparser requests simplejson
 ```
-修改AlertWeixin/AlertWeixin.conf，填入微信服务号相关信息
+修改AlertWeixin/AlertWeixin.conf，填入微信服务号相关信息
 
 ```
 [default]
@@ -56,7 +56,7 @@ secret      = {secret}
 template_id = {template_id​}
 ```
 
-## 四、获取服务号订阅用户信息
+## 四、获取微信服务号订阅用户信息
 
 ```
 # 使用wxGetUserInfo.py脚本获取服务器订阅用户列表，以及其openid
