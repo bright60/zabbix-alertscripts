@@ -117,6 +117,8 @@ Send to:		{Mobile}
 	- 其他国内服务器也可
 2. 配置代理服务
 	1. 搭建HTTPS代理
+		- tinyproxy
+		- 3proxy
 	2. 直接端口转发
 	
 		```
