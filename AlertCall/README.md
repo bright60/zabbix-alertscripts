@@ -122,10 +122,14 @@ Send to:		{Mobile}
 	2. 直接端口转发
 	
 		```
-		iptables -t nat -A PREROUTING -s {监控服务器IP}/32 -d {代理服务器IP}/32 -p tcp -m tcp --dport 8883 -j DNAT --to-destination 42.121.254.126:8883
+		iptables -t nat -A PREROUTING -s {monitor.ip.addr.ess}/32 -d {proxy.ip.addr.ess}/32 -p tcp -m tcp --dport 8883 -j DNAT --to-destination 42.121.254.126:8883
 iptables -t nat -A POSTROUTING -d 42.121.254.126/32 -p tcp -m tcp -j MASQUERADE
 		```
+3. 在海外监控服务器配置HOSTS
 
+	```
+	{monitor.ip.addr.ess}   app.cloopen.com
+	```
 
 
 
