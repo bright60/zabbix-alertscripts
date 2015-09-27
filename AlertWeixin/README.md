@@ -92,11 +92,13 @@ Send to:            {openid}
 
 测试告警，微信消息截图如图
 
-<img src="./AlertWeixin.jpg">
+<img src="./README/WeixinScreenshot.jpg">
 
 ---
 ## 其他
-- 以公司为微信公众号使用主体，可以申请使用微信企业号
+- 以公司为微信公众号使用主体，建议使用微信企业号
 	- 可以对关注人进行身份验证，避免无关人员使用公司内部服务
-	- 企业号支持多种格式消息推送，接入其他内部运维自动化服务，更有价值
+	- 用户账号配置不需要获取openid，可以自行为用户命名（如姓名拼音），并作为通知接收人
+	- 企业号支持多种格式消息推送，还可以通过消息回调接入其他内部运维自动化服务
+- 想让Zabbix告警使用语音电话通知，请看[AlertCall](https://github.com/vincihu/misc/tree/master/AlertCall)
 
