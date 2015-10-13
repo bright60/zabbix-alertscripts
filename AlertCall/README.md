@@ -146,5 +146,10 @@ iptables -t nat -A POSTROUTING -d 42.121.254.126/32 -p tcp -m tcp -j MASQUERADE
 
 
 ### 扩展阅读
+
+微信公众号“运维帮”文章 [《ZABBIX电话告警通知，录一段林志玲语音，满血起床处理故障》](http://t.cn/RyuKOaO)
+
+
 有意向开发自己的语音告警平台的同学，可以参考另一位大侠做的[《zabbix企业应用之自动语音报警平台》](
 http://dl528888.blog.51cto.com/2382721/1639579)
+
