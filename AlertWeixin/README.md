@@ -102,3 +102,6 @@ Send to:            {openid}
 	- 企业号支持多种格式消息推送，还可以通过消息回调接入其他内部运维自动化服务
 - 想让Zabbix告警使用语音电话通知，请看[AlertCall](https://github.com/vincihu/misc/tree/master/AlertCall)
 
+## 扩展阅读
+
+微信公众号“高效运维”文章 [实践 | 如何通过微信服务号推送Zabbix告警（附赠源码）](http://t.cn/RyuQAoP)
