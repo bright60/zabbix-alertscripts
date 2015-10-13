@@ -31,13 +31,24 @@
 ## 一、注册云通讯账号，并进行企业账号认证
 [荣联·云通讯](http://www.yuntongxun.com/)
 
+- 在控制台首页-开发者信息中，记录下账号认证信息
+	- ACCOUNT SID
+	- AUTH TOKEN
+
 ## 二、创建应用
-- 记录下账号ID以及应用的APP ID/TOKEN，备用
-- 如果使用“电话播报预录制语音”的方式，需要在控制台额外配置
-	- 启用IVR功能
-	- 上传预录制的语音 alertnotify.wav
-		- 可找妹纸录制，或者使用TTS软件生成
-		- 在[控制台-管理-应用列表-应用详情-语音库管理]页面上传
+- 创建应用
+	- 勾选"启用IVR"
+	- 使用功能勾选如下
+		- 语音验证码
+		- 电话通知
+- 上传告警语音通知文件
+	- 找妹纸录制，或者使用TTS软件生成
+	- 在[控制台-管理-应用列表-应用详情-语音库管理]页面上传
+	- 脚本里使用的alertnotify.wav，可在本目录里找到
+- 在应用管理页面记录应用的 APP ID/TOKEN，备用
+	- APP ID
+	- APP TOKEN
+- 提交应用审核上线
 
 ## 三、下载配置告警通知脚本
 
@@ -66,6 +77,12 @@ accountToken    = {accountToken}
 appId           = {appId}
 ```
 
+- 如果应用还未审核上线，需要修改请求的REST API URL
+	- 修改AlertCall/yuntongxun.conf文件的serverIP字段
+		- 开发接口: sandboxapp.cloopen.com
+		- 生产接口: app.cloopen.com
+
+
 - 告警通知脚本默认使用“电话播报预录制语音”方式，如果使用“电话播报语音验证码”方式，需要修改AlertCall.sh尾部的内容（两处修改）
 
 	```
@@ -83,8 +100,13 @@ VoiceVerify $PNUM
 
 ```
 $ cd /usr/lib/zabbix/alertscripts/
+# 测试语音通知功能调用是否正常
+$ python LandingCall.py {your mobile number}
+$ python VoiceVerify.py {your mobile number} 0000
+# 测试与zabbix的集成调用是否正常
 $ sudo -u zabbix bash AlertCall.sh {your mobile number}
 ```
+
 
 
 ## 五、配置Zabbix
