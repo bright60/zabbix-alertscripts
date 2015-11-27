@@ -2,16 +2,7 @@
 
 
 
-近期看到一篇通过微信订阅号实现Zabbix告警的文章，但实践后发现有几个问题。
-
-```
-1. 需要订阅者主动向订阅号发送一条消息后，订阅号才能在后续48小时内向订阅者推送消息
-
-2. 消息放松频繁的情况下，会需要经过图形验证码处理后才能继续发送消息
-
-```
-
-本文经我自己验证，是可以实现通过微信推送消息的。这种实现基于微信服务号平台的“模板短信”功能，必要条件如下：
+通过微信推送消息基于微信服务号平台的“模板短信”功能，必要条件如下：
 
 ```
 
@@ -36,9 +27,9 @@
 
 ```
 # 下载告警通知脚本
-$ git clone https://github.com/vincihu/misc/
+$ git clone https://github.com/vincihu/zabbix-alertscripts/
 # 部署告警通知脚本到zabbix的alertscripts目录
-$ sudo mv misc/AlertWeixin /usr/lib/zabbix/alertscripts/
+$ sudo mv zabbix-alertscripts/AlertWeixin /usr/lib/zabbix/alertscripts/
 $ sudo ln -s /usr/lib/zabbix/alertscripts/{AlertWeixin/AlertWeixin.sh,}
 $ sudo mkdir /usr/lib/zabbix/alertscripts/logs
 # 为脚本添加zabbix用户执行权限
@@ -96,11 +87,11 @@ Send to:            {openid}
 
 ---
 ## 其他
-- 以公司为微信公众号使用主体，建议使用微信企业号
+- **以公司为微信公众号使用主体，建议使用微信企业号**
 	- 可以对关注人进行身份验证，避免无关人员使用公司内部服务
 	- 用户账号配置不需要获取openid，可以自行为用户命名（如姓名拼音），并作为通知接收人
 	- 企业号支持多种格式消息推送，还可以通过消息回调接入其他内部运维自动化服务
-- 想让Zabbix告警使用语音电话通知，请看[AlertCall](https://github.com/vincihu/misc/tree/master/AlertCall)
+- 想让Zabbix告警使用语音电话通知，请看[AlertCall](https://github.com/vincihu/zabbix-alertscripts/tree/master/AlertCall)
 
 ## 扩展阅读
 

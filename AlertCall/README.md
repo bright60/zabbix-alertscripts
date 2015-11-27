@@ -1,5 +1,5 @@
 # ZABBIX告警电话通知
-虽然我们已经有配置了多种告警通知方式（邮件，短信， [微信](https://github.com/vincihu/misc/tree/master/AlertWeixin) ），但是对于没有配备24小时值班岗位的运维团队来说，还是会有一个困扰，在夜深人静夜黑风高，运维同学睡着后，如何进行有效的告警通知。
+虽然我们已经有配置了多种告警通知方式（邮件，短信， [微信](https://github.com/vincihu/zabbix-alertscripts/tree/master/AlertWeixin) ），但是对于没有配备24小时值班岗位的运维团队来说，还是会有一个困扰，在夜深人静夜黑风高，运维同学睡着后，如何进行有效的告警通知。
 
 在思考这个问题的时候，就需要启用告警电话通知了。
 
@@ -54,9 +54,9 @@
 
 ```
 # 下载告警通知脚本
-$ git clone https://github.com/vincihu/misc/
+$ git clone https://github.com/vincihu/zabbix-alertscripts/
 # 部署告警通知脚本到zabbix的alertscripts目录
-$ sudo mv misc/AlertCall /usr/lib/zabbix/alertscripts/
+$ sudo mv zabbix-alertscripts/AlertCall /usr/lib/zabbix/alertscripts/
 $ sudo ln -s /usr/lib/zabbix/alertscripts/{AlertCall/AlertCall.sh,}
 $ sudo mkdir /usr/lib/zabbix/alertscripts/logs
 # 为脚本添加zabbix用户执行权限
